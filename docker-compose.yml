@@ -1,0 +1,48 @@
+version: '3'
+services:
+  back:
+    build:
+      context: ./back
+      dockerfile: dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./back:/var/www/html
+    networks:
+      - pontotel-network
+    depends_on:
+      - db
+
+  front:
+    tty: true
+    stdin_open: true
+    build:
+      context: ./front
+      dockerfile: dockerfile
+    ports:
+       - "3000:3000"
+    working_dir: /var/www
+    volumes:
+       - ./front/src:/var/www/src
+       - ./front/public:/var/www/public
+    networks:
+      - pontotel-network
+
+  db:
+    image: mysql:5.7
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: 'ponto_tel'
+      MYSQL_ROOT_PASSWORD: "asd"
+    volumes:
+      - .docker/containers/db:/var/lib/mysql
+    networks:
+      - pontotel-network
+
+
+#Docker Networks
+networks:
+  pontotel-network:
+    driver: bridge

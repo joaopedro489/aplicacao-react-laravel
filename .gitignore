@@ -1,0 +1,3 @@
+.docker
+./back/vhost.conf
+.DS_Store

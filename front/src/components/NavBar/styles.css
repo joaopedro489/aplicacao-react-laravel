@@ -1,0 +1,14 @@
+.navBar ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+.navBar li {
+	display: inline;
+	float: left;
+	margin-left: 15px;
+}
+.navBar li:hover{
+	cursor: pointer;
+}
