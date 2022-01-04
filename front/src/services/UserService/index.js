@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const route = axios.create({
-    baseURL: 'http://localhost:8080/api',
+    baseURL: 'https://ponto-tel-desafio.herokuapp.com/api',
 });
 
 // eslint-disable-next-line import/no-anonymous-default-export
